@@ -1,4 +1,4 @@
-import { animate, query, style, transition, trigger, useAnimation } from '@angular/animations';
+import { animate, animateChild, group, query, stagger, style, transition, trigger, useAnimation } from '@angular/animations';
 import { Component } from '@angular/core';
 import { bounceOutLeftAnimation, fade, fadeInAnimation, slide } from './animations';
 
@@ -11,8 +11,12 @@ import { bounceOutLeftAnimation, fade, fadeInAnimation, slide } from './animatio
     // slide
     trigger('todosAnimation', [
       transition(':enter', [
-        query('h1', [
-          style({ transform: 'translateY(-20px)' })
+        group([
+          query('h1', [
+            style({ transform: 'translateY(-20px)' }),
+            animate(1000)
+          ]),
+          query('@todoAnimation',stagger(200, animateChild()))
         ])
       ])
     ]),

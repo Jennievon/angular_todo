@@ -10,8 +10,8 @@
   <ul class="list-group">
     <li
       @todoAnimation
-      @(todoAnimation.start)="animationStarted($event)"
-      @(todoAnimation.done)="animationDone($event)"
+      (@todoAnimation.start)="animationStarted($event)"
+      (@todoAnimation.done)="animationDone($event)"
       *ngFor="let todo of todos"
       class="list-group-item"
       (click)="deleteTodo(todo)"
